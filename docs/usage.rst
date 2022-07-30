@@ -7,6 +7,8 @@ Usage
 
 To use Keycloak Django Utils in a project
 
+Set the variable KEYCLOAK_JWKS_ENDPOINT on your django settings. This is the keycloak keys endpoint (ends like "openid-connect/certs")
+
 Authentication::
 
     from keycloak_django_utils.authentication import BearerAuthentication
