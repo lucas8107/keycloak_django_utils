@@ -29,7 +29,7 @@ def get_keycloak_public_key(key_id: str):
         )
         cache.set(key_id, json_key)
 
-    return jwt.algorithms.RSAAlgorithm.from_jwk(json_key)
+    return jwt.api_jwk.PyJWK.from_json(json_key).key
 
 
 def get_token_header(access_token: str):
