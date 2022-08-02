@@ -12,10 +12,11 @@ class AuthenticationFailed(APIException):
 
 class BearerAuthentication(TokenAuthentication):
     keyword = "Bearer"
+    audience = "account"
 
     def authenticate_credentials(self, key):
         try:
-            validated_token_info = validate_token(key)
+            validated_token_info = validate_token(key, audience=self.audience)
         except Exception as e:
             raise AuthenticationFailed(detail=str(e))
         return None, validated_token_info
