@@ -1,5 +1,5 @@
 Welcome to Keycloak Django Utils's documentation!
-======================================
+=================================================
 
 .. toctree::
    :maxdepth: 2
