@@ -23,7 +23,7 @@ class RolePermission(BasePermission):
     has_client_roles = []
 
     def has_permission(self, request: Request, view):
-        token_info = request.auth
+        token_info = request.auth or dict()
 
         has_client_roles_permissions = check_client_roles(self.has_client_roles, token_info.get("resource_access", {}))
         has_realm_roles_permissions = check_realm_roles(self.has_realm_roles, token_info.get("realm_access", {}))
@@ -35,7 +35,7 @@ class RolePermission(BasePermission):
 class ServiceAccountPermission(RolePermission):
 
     def has_permission(self, request: Request, view):
-        token_info = request.auth
+        token_info = request.auth or dict()
 
         if "clientId" not in token_info:
             return False
