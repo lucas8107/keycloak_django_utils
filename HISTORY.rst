@@ -2,6 +2,11 @@
 History
 =======
 
+0.3.0 (2022-11-15)
+------------------
+
+* validate_token extra args passing to jwt.decode
+
 0.2.1 (2022-08-18)
 ------------------
 
