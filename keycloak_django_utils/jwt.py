@@ -38,9 +38,9 @@ def get_token_header(access_token: str):
     return TokenHeader(**{k: v for k, v in header.items() if k in field_names})
 
 
-def validate_token(access_token: str, audience="account"):
+def validate_token(access_token: str, audience="account", **kwargs):
     token_header = get_token_header(access_token)
     public_key = get_keycloak_public_key(token_header.kid)
     return jwt.decode(
-        access_token, key=public_key, algorithms=token_header.alg, audience=audience
+        access_token, key=public_key, algorithms=token_header.alg, audience=audience, **kwargs
     )
